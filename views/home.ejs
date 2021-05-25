@@ -23,7 +23,17 @@
         <!-- for ...-->
     </div>
     <div>
-        <button id = 'randomBtn' onclick="getnewimage()">Get new image</button>
+        <button id = 'randomBtn' value = 'random' onclick="getnewimage(this.value)">Get new random meme</button>
+        <button id = 'historyBtn' value = 'HistoryMemes' onclick="getnewimage(this.value)">Get new History meme</button>
+        <button id = 'spongeBobBtn' value = 'BikiniBottomTwitter' onclick="getnewimage(this.value)">Get new SpongeBob meme</button>
+        <button id = 'funnyBtn' value = 'funny' onclick="getnewimage(this.value)">Get new funny image</button>
+        <button id = 'carBtn' value = 'carmemes' onclick="getnewimage(this.value)">Get new Car meme</button>
+        <button id = 'wholesomememes' value = 'wholesomememes' onclick="getnewimage(this.value)">Get new Wholesome meme</button>
+        <button id = 'starwarsBtn' value = 'SequelMemes' onclick="getnewimage(this.value)">Get new Star Wars meme</button>
+        <button id = 'codingBtn' value = 'ProgrammerHumor' onclick="getnewimage(this.value)">Get new Programming/Coding meme</button>
+        <button id = 'harrypotterBtn' value = 'HarryPotterMemes' onclick="getnewimage(this.value)">Get new Harry Potter meme</button>
+        <button id = 'gamingBtn' value = 'gamingmemes' onclick="getnewimage(this.value)">Get new Gaming meme</button>
+
 
     </div>
     <script src="../JS/getImage.js"></script>
@@ -34,13 +44,19 @@
         image.id = 'randImg_img'
         var parentdiv = document.createElement('div')
         parentdiv.id = 'randImg_div'
+        var url = ''
 
-        function getnewimage(){
-            let url = 'https://meme-api.herokuapp.com/gimme';
+        function getnewimage(id){
+            console.log(id)
+            if (id == 'random'){
+                url = 'https://meme-api.herokuapp.com/gimme'
+            }else{
+                url = 'https://meme-api.herokuapp.com/gimme/' + id
+            }
             fetch(url)
             .then(res => res.json())
             .then((out) => {
-            console.log('Checkout this JSON! ', out);
+            console.log('JSON ', out);
             console.log(out.title)
             image.src = out.url
             h4.textContent = out.title
