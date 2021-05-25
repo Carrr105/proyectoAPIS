@@ -2,11 +2,8 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const app = express();
-
-
 // importing routes
-const indexRoutes = require('./routes/routeindex');
-
+const routes = require('./routes');
 
 
 // settings
@@ -20,9 +17,9 @@ app.use(express.urlencoded({extended:false}));
 
 
 // routes
-app.use('/', indexRoutes);
+app.use('/', routes);
 
 app.listen(app.get('port'), () =>{
     console.log(`server on port ${app.get('port')}`);
 });
- 
+   
