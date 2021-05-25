@@ -49,7 +49,7 @@ router.post('/registered', async function(req,res){
   console.log(req.body.email);
   firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password)
   .then((userCredential) => {
-    res.redirect("home");
+    res.render("home");
     console.log("registrado cristianamente");
   })
   .catch(error => {
@@ -68,13 +68,24 @@ router.post('/home', async function(req,res){
   console.log(req.body.email);
   firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
   .then((userCredential) => {
-    res.redirect("home");
+    res.render("home");
     console.log("logueado cristianamente");
   })
   .catch(error => {
     console.log(error);
   });
 }); 
+
+router.get('/logout', async function(req,res){
+  firebase.auth().signOut().then(function() {
+    console.log("deslogueado unu");
+    res.render('index');
+  }, function(error) {
+    console.error('Sign Out Error', error);
+  });
+});
+
+
 
 
 
