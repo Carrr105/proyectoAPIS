@@ -7,7 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script  href="./CSS/style.css" type="text/css"></script>
+    <script  href="../CSS/style.css" type="text/css"></script>
 </head>
 <!------ Include the above in your HEAD tag ---------->
 <body>
@@ -22,5 +22,36 @@
         </form>
         <!-- for ...-->
     </div>
+    <div>
+        <button id = 'randomBtn' onclick="getnewimage()">Get new image</button>
+
+    </div>
+    <script src="../JS/getImage.js"></script>
+    <script>
+        var h4 = document.createElement('h4')
+        h4.id = 'randImg_titulo'
+        var image = document.createElement('img')
+        image.id = 'randImg_img'
+        var parentdiv = document.createElement('div')
+        parentdiv.id = 'randImg_div'
+
+        function getnewimage(){
+            let url = 'https://meme-api.herokuapp.com/gimme';
+            fetch(url)
+            .then(res => res.json())
+            .then((out) => {
+            console.log('Checkout this JSON! ', out);
+            console.log(out.title)
+            image.src = out.url
+            h4.textContent = out.title
+            console.log(h4)
+            console.log(image)
+            parentdiv.appendChild(h4)
+            parentdiv.appendChild(image)
+            document.documentElement.appendChild(parentdiv)
+            })
+            .catch(err => { throw err });
+        }
+    </script>
 </body>
 </html>
