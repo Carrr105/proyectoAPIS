@@ -38,7 +38,8 @@ h2 {
 .dropdownSection {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+  padding-top: 0px;
 }
 .dropdownBtn {
   background-color: #56baed;
@@ -90,7 +91,6 @@ h2 {
 }
 
 .formTitle {
-  padding: 10px;
   text-align: center;
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -114,6 +114,7 @@ h2 {
   display: flex;
   justify-content: flex-end;
   padding: 10px;
+  padding-bottom: 0px;
 }
 
 .logOutButton {
