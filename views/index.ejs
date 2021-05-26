@@ -1,47 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Test</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script  href="../CSS/style.css" type="text/css"></script>
-</head>
-<!------ Include the above in your HEAD tag ---------->
-<body>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="/css/styles.css" type="text/css" rel="stylesheet" />
+  </head>
+  <!------ Include the above in your HEAD tag ---------->
+  <body>
     <div class="wrapper fadeInDown">
-    <div id="formContent">
-        <!-- Tabs Titles -->
+      <div id="formContent">
+        <!-- Title -->
+        <h1 class="formTitle">MEMES</h1>
 
         <!-- Icon -->
         <div class="fadeIn first">
-        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+          <img
+            class="loginImage"
+            src="https://images-na.ssl-images-amazon.com/images/I/51n91sx4oHL._AC_SY355_.jpg"
+            alt="Meme user"
+          />
+          <!-- <span class="glyphicon glyphicon-user gIcon"></span> -->
         </div>
+        <p>Log in or register to see funny and amazing memes!</p>
 
+        <!-- Buttons -->
+        <div class="userButtons">
+          <a
+            class="btn btn-primary"
+            data-toggle="collapse"
+            href="#collapseRegister"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseRegister"
+            >Register Account</a
+          >
+        </div>
         <!-- Register Form -->
-        <h4>Register</h4>
-        <form action="/registered" method="POST">
-        <input type="text" id="email" name="email" class="fadeIn second" placeholder="email">
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-        <input type="submit" class="fadeIn fourth">
-        </form>
-
+        <div class="collapse" id="collapseRegister">
+          <h4>Register</h4>
+          <form action="/registered" method="POST">
+            <input
+              type="text"
+              id="email"
+              name="email"
+              class="fadeIn second"
+              placeholder="Email"
+            />
+            <input
+              type="text"
+              id="password"
+              class="fadeIn third"
+              name="password"
+              placeholder="Password"
+            />
+            <input type="submit" class="fadeIn fourth" />
+          </form>
+        </div>
         <!-- Login Form -->
         <h4>Log In</h4>
         <form action="/home" method="POST">
-        <input type="text" id="email" name="email" class="fadeIn second" placeholder="email">
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-        <input type="submit" class="fadeIn fourth">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            class="fadeIn second"
+            placeholder="Email"
+          />
+          <input
+            type="text"
+            id="password"
+            class="fadeIn third"
+            name="password"
+            placeholder="Password"
+          />
+          <input type="submit" class="fadeIn fourth" />
         </form>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
+          <a class="underlineHover" href="#">Forgot Password?</a>
+          <span></span>
         </div>
-
+      </div>
     </div>
-    </div>
-</body>
+  </body>
 </html>
