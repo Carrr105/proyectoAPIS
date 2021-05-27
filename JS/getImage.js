@@ -1,3 +1,4 @@
+/*
 var after = ''
 
 function getnewimage(){
@@ -11,14 +12,16 @@ function getnewimage(){
             if(body.data.children[index].data.post_hint == 'image'){
                 let div = document.createElement('div')
                 let h4 = document.createElement('h4')
-                let image = docuemnt.createElement('img')
+                let image = document.createElement('img')
                 image.src = body.data.children[index].data.url_overriden_by_dest
                 h4.textContent = body.data.children[index].data.title
                 div.appendChild(h4)
                 div.appendChild(image)
                 parentdiv.appendChild(div)
             }
+            console.log("entre " + i);
         }
         document.body.appendChild(parentdiv)
     })
 }
+*/

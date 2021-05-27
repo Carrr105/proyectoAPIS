@@ -10,6 +10,7 @@ const { runInNewContext } = require('vm');
 var firebase = require("firebase/app");
 const { nextTick } = require('process');
 require("firebase/auth");
+var currentMail;
 
 // ADMIN
 var fireAdmin = require("firebase-admin");
@@ -32,7 +33,7 @@ var usersRef = ref.child("users");
 
 
 // CLIENTE
-
+ 
 var firebaseConfig = require("../firebaseConfig.json");
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -51,16 +52,16 @@ router.post('/registered', async function(req,res){
   .then((userCredential) => {
     res.render("home");
     console.log("registrado cristianamente");
+    var newUser={
+      email: req.body.email,
+    }
+    usersRef.push(newUser);
+    console.log("registrado en tabla");
   })
   .catch(error => {
     console.log(error);
   });
-  var newUser={
-    email: req.body.email,
-  }
-  usersRef.push(newUser);
-  console.log("registrado en tabla");
-}); 
+});  
 
 // LOGIN
 router.post('/home', async function(req,res){
@@ -68,13 +69,42 @@ router.post('/home', async function(req,res){
   console.log(req.body.email);
   firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
   .then((userCredential) => {
-    res.render("home");
+    currentMail =  req.body.email;
+    var text = "xd";
+    res.render("home", {usersRef, currentMail});
     console.log("logueado cristianamente");
   })
   .catch(error => {
     console.log(error);
   });
 }); 
+
+router.post('/home/newImg', async function (req, res){
+  console.log(req.body.url_link);
+  console.log(req.body.title);
+  var query = usersRef.orderByChild("email").equalTo(currentMail);
+
+  query.once("value", function(snapshot) {
+    snapshot.forEach(function(userSnapshot) {
+        userSnapshot.ref.push({ // se crea un nuevo registro
+          url: req.body.url_link,
+          title: req.body.title
+        });
+    });
+});
+
+  res.end();
+})
+
+// ADD IMAGE
+/*
+var users = '<%- usersRef %>';
+            var email = '<%-mail%>';
+            users.orderByChild(email).push().set({
+                memes: out.url
+            });
+            console.log(users.orderByChild(email));
+            */
 
 router.get('/logout', async function(req,res){
   firebase.auth().signOut().then(function() {
@@ -135,4 +165,10 @@ router.post("/home", async function(req, res){
 
 module.exports = router; 
 
- 
+/*
+export function addImg(url){
+  usersRef.orderByChild(currentMail).push().set({
+    memes: url
+  });
+}
+*/

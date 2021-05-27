@@ -94,16 +94,27 @@
       </div>
       <img id="memeImg" class="imgMeme" />
     </div>
-    <script src="../JS/getImage.js"></script>
+    <div class="addMemeBtnDiv">
+        <button
+          class="addMemeBtn"
+          id="addBtn"
+          value="Random"
+          onclick="addImage()"
+        >
+          ADD
+        </button>
+    </div>
+    <script type="text/javascript" src="../JS/getImage.js"></script>
     <script>
       var memeTitle = document.getElementById("memeTitle");
       var memeImage = document.getElementById("memeImg");
       var url = "";
       var newMemeBtn = document.getElementById("newBtn");
+      var currentUrl;
 
       function getnewimage(id) {
-        console.log(id);
-        if (id == "random") {
+        console.log("first id is " + id);
+        if (id == "Random") {
           url = "https://meme-api.herokuapp.com/gimme";
         } else {
           url = "https://meme-api.herokuapp.com/gimme/" + id;
@@ -114,16 +125,38 @@
             console.log("JSON ", out);
             console.log(out.title);
             memeImage.src = out.url;
+            currentUrl = out.url;
             memeTitle.textContent = out.title;
             newMemeBtn.value = id;
             console.log(memeTitle);
-            console.log(image);
+            //console.log(image);
+            console.log(out.title);
+            console.log("link is " + currentUrl);
+
+
+
+            
             // memeDiv.appendChild(memeImage);
             // document.documentElement.appendChild(memeDiv);
           })
           .catch((err) => {
             throw err;
           });
+          console.log("link again is " + currentUrl);
+      }
+
+      function addImage(){
+
+        $.ajax({ url: "/home/newImg", dataType: "json", type: "POST", data: { 
+                'url_link': memeImg.src,
+                'title': memeTitle.textContent
+        },
+            success: function(){
+                console.log(memeImg.src);
+                console.log(memeTitle.textContent);
+            }
+        });
+
       }
     </script>
   </body>
