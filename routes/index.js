@@ -79,6 +79,7 @@ router.post('/home', async function(req,res){
   });
 }); 
 
+// Add image to account
 router.post('/home/newImg', async function (req, res){
   console.log(req.body.url_link);
   console.log(req.body.title);
@@ -94,17 +95,51 @@ router.post('/home/newImg', async function (req, res){
 });
 
   res.end();
-})
+});
 
-// ADD IMAGE
-/*
-var users = '<%- usersRef %>';
-            var email = '<%-mail%>';
-            users.orderByChild(email).push().set({
-                memes: out.url
-            });
-            console.log(users.orderByChild(email));
-            */
+router.get('/myMemes', async function (req, res){
+  var query = usersRef.orderByChild("email").equalTo(currentMail);
+
+  query.once("value", function(snapshot) {
+    snapshot.forEach(function(userSnapshot) {
+      console.log(snapshot.toJSON());
+      console.log("hola0");
+      var obj = snapshot.toJSON();
+      var newObj;
+      var titles = new Array();
+      var urls = new Array();
+      for (var key in obj) {
+        console.log("Key: " + key);
+        console.log("Value: " + obj[key]);
+        newObj = obj[key];
+    }
+    //console.log(newObj);
+    console.log("new object");
+      for (var newKey in newObj){
+        console.log("Key: " + newKey);
+        if (typeof newObj[newKey].title === 'undefined' || typeof newObj[newKey].url === 'undefined'){
+          // do nothing
+        }
+        else{
+          console.log("title is: " + newObj[newKey].title);
+          console.log("url is: " + newObj[newKey].url);
+          titles.push(newObj[newKey].title);
+          urls.push(newObj[newKey].url);
+        }
+      }
+      console.log("items recovered");
+      console.log(titles);
+      console.log(urls);
+
+      /*
+      var obj = snapshot.toJSON();
+      var titles =  obj[0][0].title;
+      console.log(titles);
+      */
+     res.render("memes", {titles, urls});
+    });
+  });
+});
 
 router.get('/logout', async function(req,res){
   firebase.auth().signOut().then(function() {

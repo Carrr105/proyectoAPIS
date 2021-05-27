@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="/css/styles.css" type="text/css" rel="stylesheet" />
+  </head>
+  <!------ Include the above in your HEAD tag ---------->
+  <body>
+    <!-- Title -->
+    <form action="/logout" method="GET" class="logOutDiv">
+      <button class="logOutButton" type="submit">Log out</button>
+    </form>
+    <div>
+      <h1 class="formTitle">MEMES</h1>
+      <br />
+    </div>
+    <div id="memeDiv" class="divMeme">
+    <% for (var i = 0; i < titles.length; i++) { %>
+      <h4 class="titleMeme" id="memeTitle">
+        <%= titles[i] %>
+      </h4>
+      <img id="memeImg" class="imgMeme" src = <%= urls[i] %> />
+      <% } %>
+    </div>
+  </body>
+</html>
