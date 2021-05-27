@@ -57,6 +57,8 @@ router.post('/registered', async function(req,res){
     }
     usersRef.push(newUser);
     console.log("registrado en tabla");
+    currentMail = req.body.email;
+    console.log("new mail is " + req.body.email);
   })
   .catch(error => {
     console.log(error);
