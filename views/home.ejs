@@ -23,7 +23,7 @@
   <body>
     <!-- Title -->
     <form action="/logout" method="GET" class="logOutDiv">
-      <button class="logOutButton" type="submit">Log out</button>
+      <button class="newMemeBtn" type="submit">Log out</button>
     </form>
     <div>
       <h1 class="formTitle">MEMES</h1>
@@ -93,22 +93,21 @@
         </button>
       </div>
       <img id="memeImg" class="imgMeme" />
-    </div>
-    <div class="addMemeBtnDiv">
-        <button
-          class="addMemeBtn"
-          id="addBtn"
-          value="Random"
-          onclick="addImage()"
-        >
-          ADD
-        </button>
+      <button
+      class="newMemeBtn"
+      id="addBtn"
+      value="Random"
+      onclick="addImage()"
+      style="margin-bottom: 10px; margin-left: 10px;"
+      >
+      ADD TO FAVORITES
+      </button>
     </div>
     <div class="myMemesBtnDiv">
         <form method="GET"
         action="/myMemes">
         <button
-          class="myMemesBtn"
+          class="MemeBtn1"
           id="myBtn"
           value="Random"
         >

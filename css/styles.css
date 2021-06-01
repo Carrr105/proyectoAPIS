@@ -141,6 +141,32 @@ h2 {
   font-weight: bold;
 }
 
+.deleteButton {
+  border-radius: 6px;
+  border-color: darkslateblue;
+  border-width: 1px;
+  width: 10%;
+  height: 40px;
+  background-color: #56baed;
+  color: white;
+  font-weight: bold;
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
+
+.MemeBtn1{
+  border-radius: 6px;
+  border-color: darkslateblue;
+  border-width: 1px;
+  width: 10%;
+  height: 40px;
+  background-color: #56baed;
+  color: white;
+  font-weight: bold;
+  margin-left: 20%;
+  margin-bottom: 1%;
+}
+
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
