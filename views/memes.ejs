@@ -31,11 +31,37 @@
     </div>
     <div id="memeDiv" class="divMeme">
     <% for (var i = 0; i < titles.length; i++) { %>
+      <div id= "specificMeme" link = <%= urls[i] %> >
       <h4 class="titleMeme" id="memeTitle">
         <%= titles[i] %>
       </h4>
       <img id="memeImg" class="imgMeme" src = <%= urls[i] %> />
+      <button class="deleteButton"> delete </button>
+      </div>
       <% } %>
     </div>
   </body>
+  <script>
+    $(document).ready(function() {
+      $(".deleteButton").click (function(event){
+      event.preventDefault();
+      console.log("hola");
+      var linkSrc = $(this).parent().attr("link");
+      console.log($(this).parent().attr("link"));
+      $(this).parent().remove();
+
+
+      $.ajax({ url: "/del", dataType: "json", type: "POST", data: { 
+                'url_link': linkSrc
+        },
+            success: function(){
+                console.log("link client is " + linkSrc);
+            }
+        });
+
+      });
+    });
+
+  </script>
+
 </html>

@@ -152,6 +152,46 @@ router.get('/logout', async function(req,res){
   });
 });
 
+router.post('/del', async function(req,res){
+  var link = req.body.url_link;
+  var query = usersRef.orderByChild("email").equalTo(currentMail);
+// get email register
+    query.once("value", function(snapshot) {
+    snapshot.forEach(function(userSnapshot) {
+      var keyUser = userSnapshot.key;
+      console.log(userSnapshot.key+': '+userSnapshot.val());
+
+      var query2 = usersRef.child(keyUser).orderByChild("url").equalTo(link);
+// get img register and delete
+  query2.once("value", function(sn) {
+    sn.forEach(function(usn) {
+
+      console.log("This image will be deleted");
+      console.log(usn.toJSON());
+      usn.ref.remove();
+
+    });
+  });
+
+    });
+  });
+/*
+  var query2 = usersRef.child(keyUser).orderByChild("url").equalTo(link);
+
+  query2.once("value", function(snapshot) {
+    snapshot.forEach(function(userSnapshot) {
+
+      console.log("OK ITS HAPPENING");
+      console.log(userSnapshot.key+': '+userSnapshot.val());
+    });
+  });
+  */
+    
+
+  console.log("RECEIVED ON SERVER: " + link);
+  res.end();
+});
+
 
 
 
