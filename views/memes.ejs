@@ -29,6 +29,18 @@
       <h1 class="formTitle">MEMES</h1>
       <br />
     </div>
+    <div class="myMemesBtnDiv">
+      <form method="GET"
+      action="/home">
+      <button
+        class="MemeBtn2"
+        id="myBtn"
+        value="Random"
+      >
+        Home
+      </button>
+  </form>
+  </div>
     <div id="memeDiv" class="divMeme">
     <% for (var i = 0; i < titles.length; i++) { %>
       <div id= "specificMeme" link = <%= urls[i] %> >

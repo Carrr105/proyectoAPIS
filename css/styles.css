@@ -167,6 +167,19 @@ h2 {
   margin-bottom: 1%;
 }
 
+.MemeBtn2{
+  border-radius: 6px;
+  border-color: darkslateblue;
+  border-width: 1px;
+  width: 10%;
+  height: 40px;
+  background-color: #56baed;
+  color: white;
+  font-weight: bold;
+  margin-left: 70%;
+  margin-bottom: 1%;
+}
+
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;

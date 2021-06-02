@@ -81,6 +81,18 @@ router.post('/home', async function(req,res){
   });
 }); 
 
+// LOGIN
+router.get('/home', async function(req,res){
+  if (currentMail!=""){
+    res.render("home", {usersRef, currentMail});
+  }
+  else{
+    res.render("index");
+  }
+  res.end();
+}); 
+
+
 // Add image to account
 router.post('/home/newImg', async function (req, res){
   console.log(req.body.url_link);
@@ -146,6 +158,7 @@ router.get('/myMemes', async function (req, res){
 router.get('/logout', async function(req,res){
   firebase.auth().signOut().then(function() {
     console.log("deslogueado unu");
+    currentMail="";
     res.render('index');
   }, function(error) {
     console.error('Sign Out Error', error);
