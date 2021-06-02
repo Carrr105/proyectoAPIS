@@ -4,10 +4,10 @@ const express = require('express');
 const router = express.Router();
 const { render } = require('ejs');
 const { auth } = require("firebase-admin");
-require("dotenv").config;
+// las variables de entorno estan en minusculas, por cuestiones de tiempo quedarán así
 
 const { runInNewContext } = require('vm');
-
+require("dotenv").config();
 var firebase = require("firebase/app");
 const { nextTick } = require('process');
 require("firebase/auth");
@@ -16,9 +16,10 @@ var currentMail;
 // ADMIN
 var fireAdmin = require("firebase-admin");
 
+
 //var serviceAccount = require ("../serviceAccountKey.json");
 
-// descomentar el require si se ejecuta localmente
+// descomentar el require si se ejecuta localmente, si se desea
 var serviceAccount = /*require ("../serviceAccountKey.json") ||*/ {
     "type": process.env.type,
     "project_id": process.env.project_id,
@@ -49,7 +50,7 @@ var usersRef = ref.child("users");
 
 // CLIENTE
  
-// descomentar el require si se ejecuta localmente
+// descomentar el require si se ejecuta localmente, si se desea
 var firebaseConfig = /* require("../firebaseConfig.json") || */ {
     "apiKey": process.env.apiKey,
     "authDomain": process.env.authDomain,
