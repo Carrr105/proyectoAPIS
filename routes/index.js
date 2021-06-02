@@ -18,7 +18,8 @@ var fireAdmin = require("firebase-admin");
 
 //var serviceAccount = require ("../serviceAccountKey.json");
 
-var serviceAccount = require ("../serviceAccountKey.json") || {
+// descomentar el require si se ejecuta localmente
+var serviceAccount = /*require ("../serviceAccountKey.json") ||*/ {
     "type": process.env.type,
     "project_id": process.env.project_id,
     "private_key_id": process.env.private_key_id,
@@ -48,7 +49,8 @@ var usersRef = ref.child("users");
 
 // CLIENTE
  
-var firebaseConfig = require("../firebaseConfig.json") || {
+// descomentar el require si se ejecuta localmente
+var firebaseConfig = /* require("../firebaseConfig.json") || */ {
     "apiKey": process.env.apiKey,
     "authDomain": process.env.authDomain,
     "databaseURL": process.env.databaseURL,
